@@ -3,42 +3,43 @@ import pandas as pd
 import numpy as np
 
 
-    
+
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
-  
-     
+
+
 def verification_input(value, answer):
-    
+
     while True:
         user_input = input(value).lower()
         try:
             if user_input in ['chicago', 'new york city', 'washington'] and answer == 1:
-                break 
+                break
             elif user_input in ['january' , 'february' , 'march' , 'april' , 'may' , 'june' , 'all'] and answer == 2:
                 break
             elif user_input in ['sunday' , 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'all'] and answer == 3:
                 break
             else:
                 if answer == 1 or answer == 2 or answer == 3:
-                    print('wrong answer')           
-        except ValueError: 
-            print('error input') 
-    return user_input 
-   
-        
-        
-def get_filters():   
+                    print('wrong answer')
+        except ValueError:
+            print('error input')
+    return user_input
+
+
+
+def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
+    print('Information will be displayed based on choices')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = verification_input('which city would you like to display its information?(chicago, new york city, washington) ' , 1)
-    # TO DO: get user input for month (all, january, february, ... , june)      
+    # TO DO: get user input for month (all, january, february, ... , june)
     month = verification_input('in which month? *from January to June ', 2)
-    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday) 
+    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     day = verification_input('in which day? ', 3)
     print('-'*40)
-        
+
     return city, month, day
 
 
@@ -61,7 +62,7 @@ def load_data(city, month, day):
     # extract month and day of week from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-    df['hours'] = df['Start Time'].dt.hour 
+    df['hours'] = df['Start Time'].dt.hour
 
     # filter by month if applicable
     if month != 'all':
@@ -76,7 +77,7 @@ def load_data(city, month, day):
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
-        
+
 
     return df
 
@@ -112,7 +113,7 @@ def station_stats(df):
 
     # TO DO: display most frequent combination of start station and end station trip
     print('Most frequent combination of start station and end station trip: ', df.groupby(['Start Station','End Station']).size().idxmax())
-       
+
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -123,7 +124,7 @@ def trip_duration_stats(df):
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
-   
+
     # TO DO: display total travel time
     print('Total Travel Time: ' , df['Trip Duration'].sum())
 
@@ -149,29 +150,29 @@ def user_stats(df, city):
         print('Common year of birth: ' , df['Birth Year'].mode()[0])
     else:
         print('Sorry no data about gnder and Birth Year')
-        
-        
+
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 def showdata(df):
-    row = 0 
+    row = 0
     T = True
     while T:
         rowdata= input('if you like to see row data enter - yes -: ').lower()
         if rowdata == 'yes':
-            print(df.iloc[row:row + 5]) 
+            print(df.iloc[row:row + 5])
             row += 5
         elif rowdata == 'no':
-            break 
-            
-            
+            break
+
+
 def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
-        
-        
+
+
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
@@ -182,7 +183,7 @@ def main():
         if restart.lower() != 'yes':
             break
             print('yes')
-           
+
 
 
 if __name__ == "__main__":
