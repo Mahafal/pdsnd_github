@@ -159,7 +159,7 @@ def showdata(df):
     row = 0
     T = True
     while T:
-        rowdata= input('if you like to see row data enter - yes -: ').lower()
+        rowdata= input('if you like to see row data enter - yes -: \n').lower()
         if rowdata == 'yes':
             print(df.iloc[row:row + 5])
             row += 5
