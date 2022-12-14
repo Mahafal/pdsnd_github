@@ -29,15 +29,19 @@ def verification_input(value, answer):
 
 
 
-<<<<<<< HEAD
+
 def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     print('Answer the questions asked')
-=======
+
 def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     print('Information will be displayed based on choices')
->>>>>>> refactoring
+
+def get_filters():
+    print('Hello! Let\'s explore some US bikeshare data!')
+    print('Information will be displayed based on choices')
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = verification_input('which city would you like to display its information?(chicago, new york city, washington) ' , 1)
     # TO DO: get user input for month (all, january, february, ... , june)
@@ -160,12 +164,12 @@ def user_stats(df, city):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
+    #function used to specify view way of the data
 def showdata(df):
     row = 0
     T = True
     while T:
-        rowdata= input('if you like to see row data enter - yes -: ').lower()
+        rowdata= input('if you like to see row data enter - yes -: \n').lower()
         if rowdata == 'yes':
             print(df.iloc[row:row + 5])
             row += 5
