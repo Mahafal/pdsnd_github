@@ -29,9 +29,15 @@ def verification_input(value, answer):
 
 
 
-def get_filters():   
+<<<<<<< HEAD
+def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     print('Answer the questions asked')
+=======
+def get_filters():
+    print('Hello! Let\'s explore some US bikeshare data!')
+    print('Information will be displayed based on choices')
+>>>>>>> refactoring
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = verification_input('which city would you like to display its information?(chicago, new york city, washington) ' , 1)
     # TO DO: get user input for month (all, january, february, ... , june)
