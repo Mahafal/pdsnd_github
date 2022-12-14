@@ -154,7 +154,7 @@ def user_stats(df, city):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
+    #function used to specify view way of the data
 def showdata(df):
     row = 0
     T = True
